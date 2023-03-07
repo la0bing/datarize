@@ -1,0 +1,17 @@
+# run checks and tests
+
+name: staging
+
+on:
+  pull_request:
+    paths:
+      - datarize/**
+      - poetry.lock
+      - pyproject.toml
+      - .github/workflows/**
+      - tests/**
+      - .flake8
+
+jobs:
+  checks:
+    uses: ./.github/workflows/test.yml

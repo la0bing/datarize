@@ -1,0 +1,17 @@
+# workflow to mark checks pass when non path related changes
+
+name: docs
+
+on:
+  pull_request:
+    paths-ignore:
+      - datarize/**
+      - poetry.lock
+      - pyproject.toml
+      - .github/workflows/**
+      - tests/**
+      - .flake8
+
+jobs:
+  checks:
+    uses: ./.github/workflows/dummy_test.yml

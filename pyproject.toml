@@ -1,15 +1,32 @@
 [tool.poetry]
-name = "repo-template"
-version = "0.1.0"
-description = "A repository template to be used"
+name = "datarize"
+version = "0.0.1"
+description = ""
 authors = ["Melvin Low <la0bing07148@gmail.com>"]
 license = "LICENSE"
 readme = "README.md"
-packages = [{include = "repo_template"}]
 
 [tool.poetry.dependencies]
 python = "^3.7"
+
+[tool.poetry.group.dev.dependencies]
 pre-commit = "^2.20.0"
+python-semantic-release = "^7.32.2"
+pytest = "^7.2.0"
+flake8 = "^6.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.semantic_release]
+version_toml = [
+    "pyproject.toml:tool.poetry.version"
+]
+branch = "master"
+upload_to_pypi = true
+upload_to_release = true
+build_command = "pip install poetry && poetry build"
 
 [tool.isort]
 multi_line_output = 3
@@ -18,7 +35,7 @@ use_parentheses = true
 line_length = 88
 
 [tool.black]
-target-version = ["py37", "py38", "py39"]
+target-version = ["py38", "py39", "py310"]
 line-length = 88
 include = '\.pyi?$'
 exclude = '''
@@ -37,8 +54,3 @@ exclude = '''
     | blib2to3
     | tests/data
 )/'''
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
